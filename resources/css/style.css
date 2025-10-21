@@ -25,10 +25,11 @@
     padding: 10px;
     box-sizing: border-box;
     background-image: linear-gradient(red, darkred);
-    float: left;
+    display: inline-block;
+    vertical-align: top;
 }
 
-.box-float:last-child {
+.box-float:nth-child(3n) {
     margin-right: 0;
 }
 

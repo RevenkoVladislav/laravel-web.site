@@ -50,8 +50,6 @@
             cum deleniti, dolore earum est fugiat in molestias, neque perferendis perspiciatis quaerat quas rerum soluta
             voluptate.
         </div>
-
-        <div class="box-clear"></div>
     </div>
 </section>
 

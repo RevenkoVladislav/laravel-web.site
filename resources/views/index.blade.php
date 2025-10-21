@@ -36,20 +36,6 @@
             cum deleniti, dolore earum est fugiat in molestias, neque perferendis perspiciatis quaerat quas rerum soluta
             voluptate.
         </div>
-
-        <div class="box-float">
-            Lorem ipsum dolor sit amet
-        </div>
-
-        <div class="box-float">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae debitis facere facilis magnam
-        </div>
-
-        <div class="box-float">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, quaerat unde. Ab alias consectetur
-            cum deleniti, dolore earum est fugiat in molestias, neque perferendis perspiciatis quaerat quas rerum soluta
-            voluptate.
-        </div>
     </div>
 </section>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MessagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 
@@ -13,4 +14,6 @@ Route::controller(MainController::class)->group(function () {
     });
     Route::get('/services', 'services');
 });
+
+Route::resource('messages', MessagesController::class);
 

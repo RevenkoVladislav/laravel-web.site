@@ -12,12 +12,12 @@ class MessagesStorageService
 
     public function has(int $id)
     {
-        return array_key_exists($id, $this->read());
+        return property_exists($this->read(), $id);
     }
 
     public function get(int $id)
     {
-        return $this->read()[$id];
+        return $this->read()->$id;
     }
 
     protected function read()

@@ -25,7 +25,7 @@ class MessagesController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -33,14 +33,17 @@ class MessagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dump($request->all());
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id)
     {
+        if(!$this->messagesStorage->has($id)){
+            abort(404);
+        }
         $message = $this->messagesStorage->get($id);
 
         return view('show', compact('message'));

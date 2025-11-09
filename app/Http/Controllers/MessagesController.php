@@ -15,7 +15,9 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        dump($this->messagesStorage->all());
+        $messages = $this->messagesStorage->all();
+
+        return view('index', compact('messages'));
     }
 
     /**
@@ -39,7 +41,9 @@ class MessagesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $message = $this->messagesStorage->get($id);
+
+        return view('show', compact('message'));
     }
 
     /**

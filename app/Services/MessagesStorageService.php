@@ -26,7 +26,7 @@ class MessagesStorageService
             $this->save([]);
         }
 
-        $data = json_decode(Storage::get('messages.json', true));
+        $data = json_decode(Storage::get('messages.json'), true);
         return $data;
     }
 

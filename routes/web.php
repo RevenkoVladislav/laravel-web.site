@@ -6,7 +6,8 @@ use App\Http\Controllers\MainController;
 
 //Главная страница
 Route::controller(MainController::class)->group(function () {
-    Route::get('/', 'index');
+    Route::get('/', 'index')->name('index');
+
     Route::get('/about', function () {
         return view('about', [
             'some_variable' => mt_rand(1, 10)

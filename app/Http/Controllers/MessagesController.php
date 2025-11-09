@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\Test;
 use Illuminate\Http\Request;
 use App\Services\MessagesStorageService;
 class MessagesController extends Controller
@@ -33,7 +34,14 @@ class MessagesController extends Controller
      */
     public function store(Request $request)
     {
-        dump($request->all());
+        $request->validate([
+            'title' => 'required|string',
+            'content' => ['required', 'string', Test::class]
+        ]);
+
+        //save $data
+
+        return redirect()->route('messages.index')->with('message', 'success');
     }
 
     /**

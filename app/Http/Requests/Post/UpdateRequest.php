@@ -11,7 +11,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,19 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|max:100|unique:posts,title',
+            'content' => 'required|string'
+        ];
+    }
+
+    public function messages() : array
+    {
+        return [
+            'title.required' => 'Заголовок обязателен',
+            'title.max' => 'Заголовок слишком длинный ',
+            'title.unique' => 'Заголовок занят',
+            'content.required' => 'Контент обязателен',
+            'content.string' => 'Должен быть строчный тип данных'
         ];
     }
 }

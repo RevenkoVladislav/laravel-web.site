@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-    <form method="post" action="{{ route('posts.store') }}">
+    <form method="post" action="{{ route('posts.update', $post->id) }}">
+        @method('Patch')
         @csrf
         Title: <input type="text" name="title" value="{{ old('title', $post->title) }}"> <br>
         @error('title')

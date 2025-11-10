@@ -9,5 +9,10 @@
         </div>
 
         <a href="{{ route('posts.edit', $post->id) }}"><p>edit</p></a>
+        <form method="POST" action="{{ route('posts.destroy', $post) }}">
+            @method('DELETE')
+            @csrf
+            <button type="submit">Delete</button>
+        </form>
     </div>
 @endsection

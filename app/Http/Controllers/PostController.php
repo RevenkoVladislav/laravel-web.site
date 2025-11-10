@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Post\StoreRequest;
+use App\Http\Requests\Post\UpdateRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -55,16 +56,19 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, Post $post)
     {
-        //
+        $data = $request->validated();
+        $post->update($data);
+        return redirect()->route('posts.index')->with('success', 'Post updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.index')->with('success', 'Post deleted');
     }
 }

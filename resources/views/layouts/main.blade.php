@@ -8,7 +8,13 @@
     <title>Index</title>
     @vite(['resources/css/style.css', 'resources/js/app.js'])
 </head>
+<div>
+    <a href="{{ route('index') }}">Go home</a>
+    <a href="{{ route('posts.index') }}">Posts</a>
+</div>
 <body>
+<h1 style="text-align: center">BLOG</h1>
+<hr>
 @yield('content')
 </body>
 </html>

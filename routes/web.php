@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 
@@ -9,12 +9,9 @@ Route::controller(MainController::class)->group(function () {
     Route::get('/', 'index')->name('index');
 
     Route::get('/about', function () {
-        return view('about', [
-            'some_variable' => mt_rand(1, 10)
-        ]);
+        return view('about');
     });
-    Route::get('/services', 'services');
 });
 
-Route::resource('messages', MessagesController::class);
+Route::resource('posts', PostController::class);
 

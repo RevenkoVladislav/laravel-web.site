@@ -11,9 +11,10 @@
 <div>
     <a href="{{ route('index') }}">Go home</a>
     <a href="{{ route('posts.index') }}">Posts</a>
+    <a href="{{ route('posts.create') }}">Create</a>
 </div>
 <body>
-<h1 style="text-align: center">BLOG</h1>
+<a href="{{ route('posts.index') }}"><h1 style="text-align: center">BLOG</h1></a>
 <hr>
 @yield('content')
 </body>

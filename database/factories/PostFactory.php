@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,7 +21,8 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(2),
-            'content' => $this->faker->paragraph(30)
+            'content' => $this->faker->paragraph(30),
+            'category_id' => Category::get()->random()->id
         ];
     }
 }

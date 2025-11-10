@@ -16,6 +16,7 @@
                 <p>
                     {{ $post->content }}
                 </p>
+                <p>Category: {{ $post->category->name }}</p>
             </div>
             <hr>
         @endforeach

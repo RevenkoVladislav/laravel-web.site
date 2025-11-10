@@ -22,8 +22,9 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|max:100|unique:posts,title',
-            'content' => 'required|string'
+            'title' => 'required|max:100',
+            'content' => 'required|string',
+            'category_id' => 'required|exists:categories,id'
         ];
     }
 
@@ -32,9 +33,10 @@ class StoreRequest extends FormRequest
         return [
             'title.required' => 'Заголовок обязателен',
             'title.max' => 'Заголовок слишком длинный ',
-            'title.unique' => 'Заголовок занят',
             'content.required' => 'Контент обязателен',
-            'content.string' => 'Должен быть строчный тип данных'
+            'content.string' => 'Должен быть строчный тип данных',
+            'category_id.required' => 'Выберите категорию',
+            'category_id.exists' => 'Выберите доступную категорию'
         ];
     }
 }

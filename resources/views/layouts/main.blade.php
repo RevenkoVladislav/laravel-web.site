@@ -6,9 +6,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible">
     <title>Index</title>
-    @vite(['resources/css/style.css', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<div>
+<div class="p-2">
     <a href="{{ route('index') }}">Go home</a>
     <a href="{{ route('posts.index') }}">Posts</a>
     <a href="{{ route('posts.create') }}">Create</a>
@@ -16,6 +16,8 @@
 <body>
 <a href="{{ route('posts.index') }}"><h1 style="text-align: center">BLOG</h1></a>
 <hr>
+<div class="rpw">
 @yield('content')
+</div>
 </body>
 </html>

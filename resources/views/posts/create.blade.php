@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+    <div class="row p-2">
     <form method="post" action="{{ route('posts.store') }}">
         @csrf
         <p>Title:</p>
@@ -27,6 +28,7 @@
         <p>{{ $message }}</p>
         @enderror
         <br>
-        <input type="submit" name="sub" value="submit">
+        <input type="submit" name="sub" value="submit" class="btn btn-success">
     </form>
+    </div>
 @endsection

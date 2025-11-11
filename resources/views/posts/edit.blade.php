@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+    <div class="p-2">
     <form method="post" action="{{ route('posts.update', $post->id) }}">
         @method('Patch')
         @csrf
@@ -29,4 +30,5 @@
         <br>
         <input type="submit" name="sub" value="submit">
     </form>
+    </div>
 @endsection

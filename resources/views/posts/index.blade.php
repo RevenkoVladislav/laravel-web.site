@@ -8,7 +8,7 @@
         </p>
     </div>
     @endif
-    <div>
+    <div class="row p-2">
         @foreach($posts as $post)
             <a href="{{ route('posts.show', $post->id) }}"><h1 style="text-align: center">{{ $post->title }}</h1></a>
             <div>

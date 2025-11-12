@@ -7,11 +7,11 @@
         </div>
 
         <p>Category: {{ $post->category->name }}</p>
-        <a href="{{ route('posts.edit', $post->id) }}"><p>edit</p></a>
+        <a href="{{ route('posts.edit', $post->id) }}">edit</a>
         <form method="POST" action="{{ route('posts.destroy', $post) }}">
             @method('DELETE')
             @csrf
-            <button type="submit">Delete</button>
+            <button type="submit" class="btn btn-danger">Delete</button>
         </form>
     </div>
 </x-layout.main>

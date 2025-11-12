@@ -8,12 +8,24 @@ use Illuminate\View\Component;
 
 class input extends Component
 {
+    public string $id;
+    public string $name;
+    public string $type;
+    public ?string $value;
+    public string $label;
+    public string $classes;
+
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(string $name, string $type = 'text', ?string $value = null, string $label = '', string $classes = 'mb-3')
     {
-
+        $this->name = $name;
+        $this->type = $type;
+        $this->value = $value;
+        $this->label = $label;
+        $this->classes = $classes;
+        $this->id = $name . '_' . microtime(true) . '_' . mt_rand(0, 10000);
     }
 
     /**

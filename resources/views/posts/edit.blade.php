@@ -3,9 +3,7 @@
     <form method="post" action="{{ route('posts.update', $post->id) }}">
         @method('Patch')
         @csrf
-        <p>Title:</p>
-        <input type="text" name="title" value="{{ old('title', $post->title) }}"> <br>
-        <x-error-link name="title" />
+        <x-forms.input name="title" label="label title" :value="$post->title" />
         <p>Content:</p> <textarea name="content" cols="30" rows="10">{{ old('content', $post->content) }}</textarea> <br>
         <x-error-link name="content" />
         <p>Category: </p>

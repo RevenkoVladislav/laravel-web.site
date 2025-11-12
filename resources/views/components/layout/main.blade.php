@@ -21,6 +21,13 @@
 <a href="{{ route('posts.index') }}"><h1 style="text-align: center">BLOG</h1></a>
 <hr>
 <div class="row p-2">
+    @if(session('success'))
+        <div>
+            <p>
+                {{ session('success') }}
+            </p>
+        </div>
+    @endif
     {{ $slot }}
 </div>
 </body>

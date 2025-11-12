@@ -2,9 +2,7 @@
     <div class="row">
     <form method="post" action="{{ route('posts.store') }}">
         @csrf
-        <p>Title:</p>
-        <input type="text" name="title" value="{{ old('title') }}"> <br>
-        <x-error-link name="title" />
+        <x-forms.input name="title" label="label title" />
         <p>Content:</p>
         <textarea name="content" cols="30" rows="10">{{ old('content') }}</textarea> <br>
         <x-error-link name="content" />

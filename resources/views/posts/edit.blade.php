@@ -4,8 +4,8 @@
         @method('Patch')
         @csrf
         <x-forms.input name="title" label="label title" :value="$post->title" />
-        <p>Content:</p> <textarea name="content" cols="30" rows="10">{{ old('content', $post->content) }}</textarea> <br>
-        <x-error-link name="content" />
+        <x-forms.textarea name="content" label="label content" :value="$post->content"/>
+
         <p>Category: </p>
         <select name="category_id">
             @foreach($categories as $category)

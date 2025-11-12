@@ -24,7 +24,7 @@ class select extends Component
         $this->arrayOptions = $arrayOptions;
         $this->label = $label;
         $this->value = $value;
-        $this->id = $name . '_' . microtime(true) . '_' . mt_rand(0, 10000);
+        $this->id = $name . uniqid();
     }
 
     /**

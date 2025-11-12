@@ -26,7 +26,7 @@ class textarea extends Component
         $this->classes = $classes;
         $this->cols = $cols;
         $this->rows = $rows;
-        $this->id = $name . '_' . microtime(true) . '_' . mt_rand(0, 10000);
+        $this->id = $name . uniqid();
     }
 
     /**

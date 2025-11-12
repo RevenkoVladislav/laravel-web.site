@@ -25,7 +25,7 @@ class input extends Component
         $this->value = $value;
         $this->label = $label;
         $this->classes = $classes;
-        $this->id = $name . '_' . microtime(true) . '_' . mt_rand(0, 10000);
+        $this->id = $name . uniqid();
     }
 
     /**

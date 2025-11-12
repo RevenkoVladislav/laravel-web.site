@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <div>
+    <div class="p-2">
         <h2 style="text-align: center">{{ $post->title }}</h2>
 
         <div>

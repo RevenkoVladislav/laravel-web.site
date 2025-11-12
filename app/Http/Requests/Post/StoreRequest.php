@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreRequest extends FormRequest
 {
@@ -22,7 +23,15 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|max:100',
+            'title' => [
+                'required',
+                $this->isMethod('post')
+                ? 'unique:posts,title'
+                : Rule::unique('posts', 'title')->ignore($this->route('post')),
+                //игнорируй текущий id при update
+                'min:5',
+                'max:100'
+            ],
             'content' => 'required|string',
             'category_id' => 'required|exists:categories,id'
         ];
@@ -32,6 +41,8 @@ class StoreRequest extends FormRequest
     {
         return [
             'title.required' => 'Заголовок обязателен',
+            'title.unique' => 'Заголовок занят',
+            'title.min' => 'Заголовок слишком короткий',
             'title.max' => 'Заголовок слишком длинный ',
             'content.required' => 'Контент обязателен',
             'content.string' => 'Должен быть строчный тип данных',

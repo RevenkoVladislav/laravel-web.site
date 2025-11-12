@@ -1,7 +1,5 @@
-@extends('layouts.main')
-
-@section('content')
-    <div class="row p-2">
+<x-layout.main title="Create">
+    <div class="row">
     <form method="post" action="{{ route('posts.store') }}">
         @csrf
         <p>Title:</p>
@@ -25,4 +23,4 @@
         <input type="submit" name="sub" value="submit" class="btn btn-success">
     </form>
     </div>
-@endsection
+</x-layout.main>

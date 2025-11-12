@@ -1,7 +1,5 @@
-@extends('layouts.main')
-
-@section('content')
-    <div class="p-2">
+<x-layout.main title="show">
+<div class="p-2">
         <h2 style="text-align: center">{{ $post->title }}</h2>
 
         <div>
@@ -16,4 +14,4 @@
             <button type="submit">Delete</button>
         </form>
     </div>
-@endsection
+</x-layout.main>

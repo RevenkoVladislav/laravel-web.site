@@ -1,5 +1,3 @@
-@extends('layouts.main')
-
-@section('content')
+<x-layout.main>
  <p>hello index</p>
-@endsection
+</x-layout.main>

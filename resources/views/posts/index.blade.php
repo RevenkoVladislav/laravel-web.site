@@ -1,6 +1,4 @@
-@extends('layouts.main')
-
-@section('content')
+<x-layout.main title="Index">
     @if(session('success'))
     <div>
         <p>
@@ -8,7 +6,7 @@
         </p>
     </div>
     @endif
-    <div class="row p-2">
+    <div class="row">
         @foreach($posts as $post)
             <a href="{{ route('posts.show', $post->id) }}"><h1 style="text-align: center">{{ $post->title }}</h1></a>
             <div>
@@ -21,4 +19,4 @@
             <hr>
         @endforeach
     </div>
-@endsection
+</x-layout.main>

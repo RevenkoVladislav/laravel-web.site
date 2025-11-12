@@ -12,16 +12,18 @@ class select extends Component
     public string $id;
     public string $name;
     public string $label;
+    public ?string $value;
     public Collection $arrayOptions;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $name, Collection $arrayOptions, string $label = '')
+    public function __construct(string $name, Collection $arrayOptions, string $label = '', ?string $value = null)
     {
         $this->name = $name;
         $this->arrayOptions = $arrayOptions;
         $this->label = $label;
+        $this->value = $value;
         $this->id = $name . '_' . microtime(true) . '_' . mt_rand(0, 10000);
     }
 

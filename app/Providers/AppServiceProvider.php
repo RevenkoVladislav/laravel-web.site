@@ -12,9 +12,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        DB::listen(function ($query) {
-           var_dump($query->sql);
-        });
+//        DB::listen(function ($query) {
+//           var_dump($query->sql);
+//        });
     }
 
     /**

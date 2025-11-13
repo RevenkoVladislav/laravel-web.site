@@ -14,17 +14,25 @@ class select extends Component
     public string $label;
     public ?string $value;
     public Collection $arrayOptions;
+    public ?string $default;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $name, Collection $arrayOptions, string $label = '', ?string $value = null)
+    public function __construct(
+        string $name,
+        Collection $arrayOptions,
+        string $label = '',
+        ?string $value = null,
+        ?string $default = null
+    )
     {
         $this->name = $name;
         $this->arrayOptions = $arrayOptions;
         $this->label = $label;
         $this->value = $value;
         $this->id = $name . uniqid();
+        $this->default = $default;
     }
 
     /**

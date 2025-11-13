@@ -6,8 +6,8 @@
         <x-forms.input name="title" label="label title" :value="$post->title" />
         <x-forms.textarea name="content" label="label content" :value="$post->content"/>
         <x-forms.select name="category_id" :array-options="$categories" label="label for categories" :value="$post->category_id" />
-        <br>
-        <input type="submit" name="sub" value="submit" class="btn btn-success">
+        <x-forms.multi-select name="tag_ids" label="Label for tags" :tags="$tags" :post="$post" />
+        <br><input type="submit" name="sub" value="submit" class="btn btn-success">
     </form>
     </div>
 </x-layout.main>

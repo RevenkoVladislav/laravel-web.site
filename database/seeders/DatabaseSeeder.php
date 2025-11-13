@@ -25,8 +25,11 @@ class DatabaseSeeder extends Seeder
 //            'email' => 'test@example.com',
 //        ]);
         Category::factory(5)->create();
-        Post::factory(15)->create();
-        Tag::factory(5)->create();
+        $posts = Post::factory(15)->create();
+        $tags = Tag::factory(5)->create();
 
+        foreach ($posts as $post){
+
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Post\StoreRequest;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('category')->get();
+        $posts = Post::with('category')->with('tags')->get();
         return view('posts.index', compact('posts'));
     }
 
@@ -23,8 +24,9 @@ class PostController extends Controller
      */
     public function create()
     {
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('posts.create', compact('categories'));
+        return view('posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -33,6 +35,7 @@ class PostController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
+        dd($data);
         Post::create($data);
         return redirect()->route('posts.index')->with('success', 'Post created');
     }

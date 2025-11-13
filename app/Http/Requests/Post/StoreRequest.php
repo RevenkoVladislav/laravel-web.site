@@ -33,7 +33,9 @@ class StoreRequest extends FormRequest
                 'max:100'
             ],
             'content' => 'required|string',
-            'category_id' => 'required|exists:categories,id'
+            'category_id' => 'required|exists:categories,id',
+            'tag_ids' => 'nullable|array',
+            'tag_ids.*' => 'exists:tags,id'
         ];
     }
 
@@ -47,7 +49,10 @@ class StoreRequest extends FormRequest
             'content.required' => 'Контент обязателен',
             'content.string' => 'Должен быть строчный тип данных',
             'category_id.required' => 'Выберите категорию',
-            'category_id.exists' => 'Выберите доступную категорию'
+            'category_id.exists' => 'Выберите доступную категорию',
+            'tag_ids.nullable' => 'Некорректный тип данных',
+            'tag_ids.array' => 'Некорректный тип данных',
+            'tag_ids.*.exists' => 'Недопустимое значение'
         ];
     }
 }

@@ -7,9 +7,16 @@
                 <p>
                     {{ $post->content }}
                 </p>
-                <p>Category: {{ $post->category->name }}</p>
+                Category:<p class="text-bg-info"> {{ $post->category->name }}</p>
+
+                Tags:
+            @foreach($post->tags as $tag)
+            <div class="card-body p-0">
+                <div class="text-bg-primary">{{ $tag->name }}</div>
             </div>
+            @endforeach
             <hr>
+            </div>
         @endforeach
     </div>
 </x-layout.main>

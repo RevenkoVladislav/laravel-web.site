@@ -49,4 +49,20 @@ class PostService
             abort(500, $exception->getMessage());
         }
     }
+
+    public function delete($post)
+    {
+        try {
+            DB::beginTransaction();
+
+            $post->tags()->detach();
+            $post->delete();
+
+            DB::commit();
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            abort(500, $exception->getMessage());
+        }
+    }
 }

@@ -72,7 +72,7 @@ class PostController extends BaseController
      */
     public function destroy(Post $post)
     {
-        $post->delete();
+        $this->postService->delete($post);
         return redirect()->route('posts.index')->with('success', 'Post deleted');
     }
 }

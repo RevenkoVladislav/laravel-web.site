@@ -1,7 +1,8 @@
 <x-layout.main title="store" main_link="magazine.index" main_page="STORE"/>
-<h1 class="text-center">Цены в магазинах</h1>
+
 <div class="col-12">
     <div class="p-2 w-25">
+        <h2>Добавить запись</h2>
         <form action="{{ route('magazine.store') }}" method="POST">
             @csrf
             <x-forms.select name="shop_id" :array-options="$shops" label="Shops" default="Выбери магазин"/>
@@ -10,8 +11,8 @@
             <input type="submit" name="sub" value="submit" class="btn btn-success">
         </form>
     </div>
+    <h1 class="text-center">Цены в магазинах</h1>
     <div class="card">
-
         <div class="card-body table-responsive p-0">
             <table class="table table-hover text-nowrap">
                 <thead>

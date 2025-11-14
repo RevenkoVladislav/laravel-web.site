@@ -22,7 +22,7 @@ class MagazineController extends Controller
     {
         $data = $request->validated();
         ProductShop::create($data);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Price in shop added!');
     }
 
     public function edit(ProductShop $productShop)
@@ -36,5 +36,6 @@ class MagazineController extends Controller
     {
         $data = $request->validated();
         $productShop->update($data);
+        return redirect()->route('magazine.index')->with('success', 'Price in shop updated!');
     }
 }

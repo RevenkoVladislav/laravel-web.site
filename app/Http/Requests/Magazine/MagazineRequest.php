@@ -22,14 +22,17 @@ class MagazineRequest extends FormRequest
      */
     public function rules(): array
     {
+        $currentId = $this->route('productShop')?->id;
         return [
             'shop_id' => 'required|exists:shops,id',
             'product_id' => [
                 'required',
                 'exists:products,id',
                 Rule::unique('product_shop')
-                    ->where(fn ($query) => $query->where('shop_id', $this->shop_id))
+                    ->where(fn($query) => $query->where('shop_id', $this->shop_id))
+                    ->ignore($currentId),
                 //проверяем что нет строк в таблице product_shop которые повторяются с shop_id
+                //игнорируй текущую запись
             ],
             'price' => 'required|integer'
         ];

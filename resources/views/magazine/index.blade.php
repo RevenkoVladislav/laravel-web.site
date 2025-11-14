@@ -31,7 +31,13 @@
                     <td class="text-center"><p class="text-info">{{ $item->product->product_name }}</p></td>
                     <td class="text-center"><p class="text-info">{{ $item->price }}</p></td>
                     <td class="text-center"><a href="{{ route('magazine.edit', $item->id) }}">Редактировать</a></td>
-                    <td class="text-center"><p class="text-info">{{ $item->price }}</p></td>
+                    <td class="text-center">
+                        <form action="{{ route('magazine.destroy', $item->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Удалить</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
                 </tbody>

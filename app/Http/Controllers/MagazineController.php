@@ -38,4 +38,10 @@ class MagazineController extends Controller
         $productShop->update($data);
         return redirect()->route('magazine.index')->with('success', 'Price in shop updated!');
     }
+
+    public function destroy(ProductShop $productShop)
+    {
+        $productShop->delete();
+        return redirect()->back();
+    }
 }

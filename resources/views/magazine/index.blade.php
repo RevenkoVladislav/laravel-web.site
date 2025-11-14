@@ -19,6 +19,8 @@
                     <th class="text-center">Магазин</th>
                     <th class="text-center">Название товара</th>
                     <th class="text-center">Цена в магазине</th>
+                    <th class="text-center">Редактировать</th>
+                    <th class="text-center">Удалить</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -26,6 +28,8 @@
                 <tr>
                     <td class="text-center"><p class="text-info">{{ $item->shop->shop_name }}</p></td>
                     <td class="text-center"><p class="text-info">{{ $item->product->product_name }}</p></td>
+                    <td class="text-center"><p class="text-info">{{ $item->price }}</p></td>
+                    <td class="text-center"><a href="{{ route('magazine.edit', $item->id) }}">Редактировать</a></td>
                     <td class="text-center"><p class="text-info">{{ $item->price }}</p></td>
                 </tr>
                 @endforeach

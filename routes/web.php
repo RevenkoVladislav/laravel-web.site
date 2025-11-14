@@ -19,5 +19,7 @@ Route::resource('posts', PostController::class);
 Route::prefix('magazine')->name('magazine.')->group(function () {
     Route::get('/', [Magazine::class, 'index'])->name('index');
     Route::post('/', [Magazine::class, 'store'])->name('store');
+    Route::get('/edit{productShop}', [Magazine::class, 'edit'])->name('edit');
+    Route::patch('/{productShop}', [Magazine::class, 'update'])->name('update');
 });
 

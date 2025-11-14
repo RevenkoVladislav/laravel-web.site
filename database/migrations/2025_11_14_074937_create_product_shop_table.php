@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('product_shop', function (Blueprint $table) {
+            $table->id()->autoIncrement()->primary();
             $table->unsignedBigInteger('shop_id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedInteger('price');

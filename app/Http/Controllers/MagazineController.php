@@ -20,6 +20,21 @@ class MagazineController extends Controller
 
     public function store(MagazineRequest $request)
     {
-        dd($request->validated());
+        $data = $request->validated();
+        ProductShop::create($data);
+        return redirect()->back();
+    }
+
+    public function edit(ProductShop $productShop)
+    {
+        $shops = Shop::all();
+        $products = Product::all();
+        return view('magazine.edit', compact('productShop', 'shops', 'products'));
+    }
+
+    public function update(MagazineRequest $request, ProductShop $productShop)
+    {
+        $data = $request->validated();
+        $productShop->update($data);
     }
 }

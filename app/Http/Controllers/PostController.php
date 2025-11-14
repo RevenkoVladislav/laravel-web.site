@@ -63,7 +63,7 @@ class PostController extends BaseController
     public function update(StoreRequest $request, Post $post)
     {
         $data = $request->validated();
-        $post->update($data);
+        $this->postService->update($post, $data);
         return redirect()->route('posts.index')->with('success', 'Post updated');
     }
 

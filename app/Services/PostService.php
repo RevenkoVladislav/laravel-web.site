@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class PostService
 {
-    public function store($data)
+    public function store($data) : void
     {
         try {
             DB::beginTransaction();
@@ -29,8 +29,24 @@ class PostService
         }
     }
 
-    public function update()
+    public function update($post, $data)
     {
+        try {
+            DB::beginTransaction();
 
+            if(!empty($data['tag_ids'])) {
+                $tagIds = $data['tag_ids'];
+                unset($data['tag_ids']);
+            }
+
+            $post->update($data);
+            $post->tags()->sync($tagIds ?? []);
+
+            DB::commit();
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            abort(500, $exception->getMessage());
+        }
     }
 }

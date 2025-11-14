@@ -1,5 +1,7 @@
 @props([
-    'title' => 'default'
+    'title' => 'default',
+    'main_page' => 'BLOG',
+    'main_link' => 'posts.index'
 ])
 
 <!doctype html>
@@ -16,9 +18,10 @@
     <a href="{{ route('index') }}">Go home</a>
     <a href="{{ route('posts.index') }}">Posts</a>
     <a href="{{ route('posts.create') }}">Create</a>
+    <a href="{{ route('magazine.index') }}">Check price</a>
 </div>
 <body>
-<a href="{{ route('posts.index') }}"><h1 style="text-align: center">BLOG</h1></a>
+<a href="{{ route($main_link) }}"><h1 style="text-align: center">{{ $main_page }}</h1></a>
 <hr>
 <div class="p-2">
     @if(session('success'))

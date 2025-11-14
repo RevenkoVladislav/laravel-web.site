@@ -11,4 +11,9 @@ class Product extends Model
 
     protected $table = 'products';
     protected $guarded = [];
+
+    public function getNameAttribute()
+    {
+        return $this->product_name;
+    }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\MagazineController AS Magazine;
 
 //Главная страница
 Route::controller(MainController::class)->group(function () {
@@ -14,4 +15,9 @@ Route::controller(MainController::class)->group(function () {
 });
 
 Route::resource('posts', PostController::class);
+
+Route::prefix('magazine')->name('magazine.')->group(function () {
+    Route::get('/', [Magazine::class, 'index'])->name('index');
+    Route::post('/', [Magazine::class, 'store'])->name('store');
+});
 

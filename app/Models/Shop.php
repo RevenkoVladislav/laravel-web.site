@@ -11,4 +11,9 @@ class Shop extends Model
 
     protected $table = 'shops';
     protected $guarded = [];
+
+    public function getNameAttribute()
+    {
+        return $this->shop_name;
+    }
 }

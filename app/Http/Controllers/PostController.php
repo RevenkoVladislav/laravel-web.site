@@ -8,7 +8,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class PostController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -35,8 +35,7 @@ class PostController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-        dd($data);
-        Post::create($data);
+        $this->postService->store($data);
         return redirect()->route('posts.index')->with('success', 'Post created');
     }
 

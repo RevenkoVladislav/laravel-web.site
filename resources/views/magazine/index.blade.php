@@ -22,16 +22,13 @@
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($productShops as $item)
                 <tr>
-                    <td class="text-center"><p class="text-info">Магазин - 1</p></td>
-                    <td class="text-center"><p class="text-info">Товар - 1</p></td>
-                    <td class="text-center"><p class="text-info">350</p></td>
+                    <td class="text-center"><p class="text-info">{{ $item->shop->shop_name }}</p></td>
+                    <td class="text-center"><p class="text-info">{{ $item->product->product_name }}</p></td>
+                    <td class="text-center"><p class="text-info">{{ $item->price }}</p></td>
                 </tr>
-                <tr>
-                    <td class="text-center"><p class="text-info">Магазин - 1</p></td>
-                    <td class="text-center"><p class="text-info">Товар - 2</p></td>
-                    <td class="text-center"><p class="text-info">500</p></td>
-                </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

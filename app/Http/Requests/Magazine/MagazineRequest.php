@@ -22,7 +22,9 @@ class MagazineRequest extends FormRequest
     public function rules(): array
     {
         return [
-
+            'shop_id' => 'required|exists:shops,id',
+            'product_id' => 'required|exists:products,id',
+            'price' => 'required|integer'
         ];
     }
 }

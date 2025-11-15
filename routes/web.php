@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CourseSchool;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SchoolController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\MagazineController AS Magazine;
@@ -23,4 +25,7 @@ Route::prefix('magazine')->name('magazine.')->group(function () {
     Route::patch('/{productShop}', [Magazine::class, 'update'])->name('update');
     Route::delete('/{productShop}', [Magazine::class, 'destroy'])->name('destroy');
 });
+
+Route::resource('schools', SchoolController::class);
+Route::put('/schools/{school}/attach', [SchoolController::class, 'attachItems'])->name('school.attach');
 

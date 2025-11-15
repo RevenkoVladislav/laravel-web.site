@@ -10,7 +10,7 @@ class Course extends Model
     protected $table = 'courses';
     protected $guareded = [];
 
-    public function courses() : BelongsToMany
+    public function schools() : BelongsToMany
     {
         return $this->belongsToMany(School::class);
     }

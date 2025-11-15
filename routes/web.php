@@ -28,4 +28,5 @@ Route::prefix('magazine')->name('magazine.')->group(function () {
 
 Route::resource('schools', SchoolController::class);
 Route::put('/schools/{school}/attach', [SchoolController::class, 'attachItems'])->name('school.attach');
+Route::get('/schools/{school}/attach', [SchoolController::class, 'attachForm'])->name('school.form');
 

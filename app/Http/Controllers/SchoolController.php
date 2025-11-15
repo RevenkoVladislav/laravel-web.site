@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CourseSchoolAttachRequest;
+use App\Models\Course;
 use App\Models\School;
 use Illuminate\Http\Request;
 
@@ -64,13 +65,24 @@ class SchoolController extends Controller
         //
     }
 
+    public function attachForm(School $school)
+    {
+        $courses = Course::orderBy('title')->get();
+        return view('school.form', compact('school', 'courses'));
+    }
+
     public function attachItems(CourseSchoolAttachRequest $request, School $school)
     {
         $payload = $request->validated();
-        $data = collect($payload['courses'])
+        $courses = collect($payload['courses']);
+        $data = $courses
         ->map(fn ($item) => [...$item, 'pivot' => ['price' => $item['price']]])
         ->pluck('pivot', 'id');
-        $school->courses()->sync($data);
+
+        $schoolProducts = $school->courses();
+        $schoolProducts->detach($courses->pluck('id'));
+        $schoolProducts->attach($data);
+
         return true;
     }
 }

@@ -10,7 +10,8 @@ class PriceController extends Controller
 {
     public function PriceForCourse(Course $course)
     {
-        $schools = $course->schools()->withPivot('price')->get();
+        $schools = $course->schools()->withPivot('price')->orderByPivot('price', 'ASC')->get();
+        //return $schools;
         return view('school.price-from-school', compact('course', 'schools'));
     }
 

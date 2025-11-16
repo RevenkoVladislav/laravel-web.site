@@ -8,10 +8,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Course extends Model
 {
     protected $table = 'courses';
-    protected $guareded = [];
+    protected $guarded = [];
 
     public function schools() : BelongsToMany
     {
-        return $this->belongsToMany(School::class);
+        return $this->belongsToMany(School::class)->withPivot('price');
+    }
+
+    public function getSchoolPriceAttribute()
+    {
+        return $this->pivot?->price ?? null;
     }
 }

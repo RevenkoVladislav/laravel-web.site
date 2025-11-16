@@ -68,13 +68,16 @@ class SchoolController extends Controller
     public function attachForm(School $school)
     {
         $courses = Course::orderBy('title')->get();
-        return view('school.form', compact('school', 'courses'));
+        $prices = $school->courses->pluck('schoolPrice', 'id');
+        return view('school.form', compact('school', 'courses', 'prices'));
     }
 
     public function attachItems(CourseSchoolAttachRequest $request, School $school)
     {
         $payload = $request->validated();
+
         $courses = collect($payload['courses']);
+
         $data = $courses
         ->map(fn ($item) => [...$item, 'pivot' => ['price' => $item['price']]])
         ->pluck('pivot', 'id');

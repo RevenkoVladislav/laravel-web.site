@@ -19,6 +19,7 @@
     <a href="{{ route('posts.index') }}">Posts</a>
     <a href="{{ route('posts.create') }}">Create</a>
     <a href="{{ route('magazine.index') }}">Check price</a>
+    <a href="{{ route('school.form', 1) }}">SchoolCourses</a>
 </div>
 <body>
 <a href="{{ route($main_link) }}"><h1 style="text-align: center">{{ $main_page }}</h1></a>

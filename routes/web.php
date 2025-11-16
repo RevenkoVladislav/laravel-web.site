@@ -33,4 +33,7 @@ Route::get('/schools/{school}/attach', [SchoolController::class, 'attachForm'])-
 Route::delete('/{course}', [SchoolController::class, 'destroyCourse'])->name('course.destroy');
 
 
+Route::get('/price', [PriceController::class, 'GroupPrice'])->name('group.price');
 Route::get('/price/{course}', [PriceController::class, 'PriceForCourse'])->name('price');
+Route::get('/price/interesting', [PriceController::class, 'InterestingPrice'])->name('interesting.price');
+Route::get('/price/{school}/{course}', [PriceController::class, 'SchoolCourse'])->name('interesting.price');

@@ -9,6 +9,8 @@ class Course extends Model
 {
     protected $table = 'courses';
     protected $guarded = [];
+    protected $hidden = ['pivot', 'created_at', 'updated_at'];
+    protected $appends = ['schoolPrice'];
 
     public function schools() : BelongsToMany
     {

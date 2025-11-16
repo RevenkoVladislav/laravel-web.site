@@ -63,7 +63,6 @@ class SchoolController extends Controller
     public function destroyCourse(Course $course)
     {
         $course->schools()->detach();
-        $course->delete();
         return redirect()->back();
     }
 

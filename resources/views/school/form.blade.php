@@ -28,7 +28,19 @@
                     </tbody>
                 </table>
                 <br><input type="submit" name="sub" value="submit" class="btn btn-success">
-
         </form>
+    </div>
+
+    <div class="row">
+        <br>
+        @foreach($courses as $course)
+        <form action="{{ route('course.destroy', $course)}}" method="POST">
+            <button type="submit">Удалить курс - {{ $course->title }}</button>
+            <br>
+            <br>
+            @csrf
+            @method('DELETE')
+        </form>
+        @endforeach
     </div>
 </x-layout.main>

@@ -60,9 +60,11 @@ class SchoolController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(School $school)
+    public function destroyCourse(Course $course)
     {
-        //
+        $course->schools()->detach();
+        $course->delete();
+        return redirect()->back();
     }
 
     public function attachForm(School $school)

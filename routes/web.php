@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CourseSchool;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PriceController;
 use App\Http\Controllers\SchoolController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
@@ -31,3 +32,5 @@ Route::put('/schools/{school}/attach', [SchoolController::class, 'attachItems'])
 Route::get('/schools/{school}/attach', [SchoolController::class, 'attachForm'])->name('school.form');
 Route::delete('/{course}', [SchoolController::class, 'destroyCourse'])->name('course.destroy');
 
+
+Route::get('/price/{course}', [PriceController::class, 'PriceForCourse'])->name('price');

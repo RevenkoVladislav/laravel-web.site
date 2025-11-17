@@ -4,9 +4,10 @@ use App\Http\Controllers\CourseSchool;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\MagazineController AS Magazine;
+use App\Http\Controllers\MagazineController as Magazine;
 
 //Главная страница
 Route::controller(MainController::class)->group(function () {
@@ -37,3 +38,8 @@ Route::get('interesting', [PriceController::class, 'InterestingPrice'])->name('i
 Route::get('/price', [PriceController::class, 'GroupPrice'])->name('group.price');
 Route::get('/price/{course}', [PriceController::class, 'PriceForCourse'])->name('price');
 Route::get('/price/{school}/{course}', [PriceController::class, 'SchoolCourse'])->name('interesting.price');
+
+Route::middleware('guest')->group(function () {
+    Route::get('/auth/login', [SessionController::class, 'create'])->name('auth.login');
+    Route::post('/auth/login', [SessionController::class, 'store']);
+});

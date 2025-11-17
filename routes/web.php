@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CourseSchool;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PriceController;
@@ -16,6 +17,10 @@ Route::controller(MainController::class)->group(function () {
     Route::get('/about', function () {
         return view('about');
     });
+});
+
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
 });
 
 Route::resource('posts', PostController::class);
@@ -42,4 +47,5 @@ Route::get('/price/{school}/{course}', [PriceController::class, 'SchoolCourse'])
 Route::middleware('guest')->group(function () {
     Route::get('/auth/login', [SessionController::class, 'create'])->name('auth.login');
     Route::post('/auth/login', [SessionController::class, 'store']);
+    Route::get('/auth/logout', [SessionController::class, 'destroy'])->name('auth.logout');
 });

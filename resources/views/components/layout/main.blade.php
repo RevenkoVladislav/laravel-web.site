@@ -4,7 +4,7 @@
     'main_link' => 'posts.index'
 ])
 
-<!doctype html>
+    <!doctype html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -21,6 +21,15 @@
     <a href="{{ route('magazine.index') }}">Check price</a>
     <a href="{{ route('school.form', 2) }}">SchoolCourses</a>
     <a href="{{ route('price', 1) }}">Price for course - 1</a>
+</div>
+
+<div class="p-2">
+    @guest
+        <a href="{{ route('auth.login') }}">Войти в аккаунт</a>
+    @endguest
+    @auth()
+            <a href="{{ route('admin.dashboard') }}">Админка</a>
+    @endauth
 </div>
 <body>
 <a href="{{ route($main_link) }}"><h1 style="text-align: center">{{ $main_page }}</h1></a>

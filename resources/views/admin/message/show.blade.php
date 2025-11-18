@@ -6,9 +6,7 @@
     <hr>
     Category: {{ $message->category->title }}
     <hr>
-    Tags: {{ $message->tags }}
-    <hr>
-    <div>
+    <div> Content:
         {{ $message->content }}
     </div>
 </x-layout.admin>

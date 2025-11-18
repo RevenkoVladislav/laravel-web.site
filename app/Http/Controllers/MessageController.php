@@ -47,25 +47,31 @@ class MessageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Message $message)
     {
-
+        return view('admin.message.show', compact('message'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Message $message)
     {
-        //
+        $categories = CategoryForMessage::orderBy('title')->get();
+        return view('admin.message.edit', compact('message', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(MessageSaveRequest $request, Message $message)
     {
+        $payload = $request->validated();
+        $message->update($payload);
 
+        return redirect()
+            ->route('admin.messages.index')
+            ->with('notice', 'Message updated');
     }
 
     /**

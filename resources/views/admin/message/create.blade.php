@@ -5,6 +5,6 @@
         <x-forms.input label="Msg title" name="title" />
         <x-forms.input label="Full text" name="content" />
         <x-forms.select label="Category" name="category_for_message_id" :array-options="$categories" display-field="title" default="Не выбрана" />
-        <button>Send</button>
+        <button type="submit">Send</button>
     </form>
 </x-layout.admin>

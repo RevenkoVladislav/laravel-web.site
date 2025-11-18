@@ -17,5 +17,6 @@
             <div>Category: {{ $message->category->title }}</div>
             <a href="{{ route('admin.messages.show', [ $message->id ]) }}">Read more</a>
         </div>
+        <hr>
     @endforeach
 </x-layout.admin>

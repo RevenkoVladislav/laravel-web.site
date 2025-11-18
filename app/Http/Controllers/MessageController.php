@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoryForMessage;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class MessageController extends Controller
     {
         $messages = Message::with('category')->where('user_id', Auth::id())->get();
 
-        return view('components.admin.message.index', compact('messages'));
+        return view('admin.message.index', compact('messages'));
     }
 
     /**
@@ -23,7 +24,8 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        $categories = CategoryForMessage::all();
+        return view('admin.message.create', compact('categories'));
     }
 
     /**

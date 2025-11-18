@@ -15,7 +15,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <div class="p-2">
-    <a href="{{ route('index') }}">Go home</a>
+    <a href="{{ route('main.messages') }}">Messages</a>
     <a href="{{ route('posts.index') }}">Posts</a>
     <a href="{{ route('posts.create') }}">Create</a>
     <a href="{{ route('magazine.index') }}">Check price</a>

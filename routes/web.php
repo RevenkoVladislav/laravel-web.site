@@ -52,5 +52,14 @@ Route::middleware('guest')->group(function () {
     Route::post('/auth/login', [SessionController::class, 'store']);
 });
 
+//тест can
+Route::middleware(['can:admin-only'])->group(function() {
+    Route::get('test', function() {
+        return 'admin only page';
+    });
+});
+
+Route::get('/messages', [MainController::class, 'messages'])->name('main.messages');
+Route::get('/message/{$message}', [MainController::class, 'message'])->name('main.message');
 
 

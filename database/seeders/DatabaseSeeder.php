@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory(4)->create();
 
 //        User::factory()->create([
 //            'name' => 'Test User',
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
 //            $post->tags()->attach($tagIds);
 //        }
 
-        Product::factory(5)->create();
-        Shop::factory(3)->create();
+//        Product::factory(5)->create();
+//        Shop::factory(3)->create();
     }
 }

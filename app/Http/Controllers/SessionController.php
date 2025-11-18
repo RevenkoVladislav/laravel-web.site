@@ -17,12 +17,14 @@ class SessionController extends Controller
     {
         $request->authenticate();
         $request->session()->regenerate();
-        return redirect()->intended(route('admin.dashboard'));
+        return redirect()->intended(route('admin.messages.index'));
     }
 
-    public function destroy()
+    public function logout(Request $request)
     {
         Auth::logout();
-        Auth::session()->invalidate();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('index');
     }
 }

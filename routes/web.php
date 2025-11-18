@@ -23,6 +23,7 @@ Route::controller(MainController::class)->group(function () {
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('messages', MessageController::class);
+    Route::get('/auth/logout', [SessionController::class, 'logout'])->name('auth.logout');
 });
 
 Route::resource('posts', PostController::class);
@@ -49,5 +50,7 @@ Route::get('/price/{school}/{course}', [PriceController::class, 'SchoolCourse'])
 Route::middleware('guest')->group(function () {
     Route::get('/auth/login', [SessionController::class, 'create'])->name('auth.login');
     Route::post('/auth/login', [SessionController::class, 'store']);
-    Route::get('/auth/logout', [SessionController::class, 'destroy'])->name('auth.logout');
 });
+
+
+

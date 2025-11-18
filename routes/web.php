@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CourseSchool;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\SchoolController;
@@ -21,6 +22,7 @@ Route::controller(MainController::class)->group(function () {
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::resource('messages', MessageController::class);
 });
 
 Route::resource('posts', PostController::class);

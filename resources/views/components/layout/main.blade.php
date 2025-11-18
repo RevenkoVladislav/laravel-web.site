@@ -28,7 +28,7 @@
         <a href="{{ route('auth.login') }}">Войти в аккаунт</a>
     @endguest
     @auth()
-            <a href="{{ route('admin.dashboard') }}">Админка</a>
+            <a href="{{ route('admin.messages.index') }}">Админка</a>
     @endauth
 </div>
 <body>

@@ -51,6 +51,7 @@ class MessageController extends Controller
     public function show(Message $message)
     {
         Gate::authorize('message-owner', $message);
+        dump($message->keywords);
         return view('admin.message.show', compact('message'));
     }
 
@@ -71,6 +72,7 @@ class MessageController extends Controller
     {
         Gate::authorize('message-owner', $message);
         $payload = $request->validated();
+        $message->keywords = collect([1, 2, 3]);
         $message->update($payload);
 
         return redirect()

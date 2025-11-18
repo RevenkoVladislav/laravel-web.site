@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MessageSaveRequest;
 use App\Models\CategoryForMessage;
 use App\Models\Message;
 use Illuminate\Http\Request;
@@ -24,16 +25,23 @@ class MessageController extends Controller
      */
     public function create()
     {
-        $categories = CategoryForMessage::all();
+        $categories = CategoryForMessage::orderBy('title')->get();
         return view('admin.message.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MessageSaveRequest $request)
     {
-        //
+        $payload = $request->validated();
+        $message = new Message();
+        $message->user_id = Auth::id();
+        $message->fill($payload)->save();
+
+        return redirect()
+            ->route('admin.messages.index')
+            ->with('notice', 'Message created');
     }
 
     /**
@@ -41,7 +49,7 @@ class MessageController extends Controller
      */
     public function show(string $id)
     {
-        //
+
     }
 
     /**
@@ -57,7 +65,7 @@ class MessageController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
     }
 
     /**

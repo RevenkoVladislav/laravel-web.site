@@ -10,11 +10,12 @@ class Message extends Model
 {
     use HasFactory;
 
+    protected $table = 'messages';
     protected $guarded = [];
 
     public function category() : BelongsTo
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(CategoryForMessage::class, 'category_for_message_id', 'id');
     }
 
     public function user() : BelongsTo

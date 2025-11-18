@@ -10,6 +10,7 @@
         </div>
         <hr>
     @endif
+
     @foreach ($messages as $message)
         <div>
             <h2>{{ $message->title }}</h2>

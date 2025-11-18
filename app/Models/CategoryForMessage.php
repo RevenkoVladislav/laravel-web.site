@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CategoryForMessage extends Model
 {
     use HasFactory;
+    protected $table = 'category_for_messages';
 
     public $guarded = [];
 

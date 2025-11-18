@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Message;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,6 +18,9 @@ class AppServiceProvider extends ServiceProvider
 //        DB::listen(function ($query) {
 //           var_dump($query->sql);
 //        });
+        Gate::define('message-owner', function (User $user, Message $message) {
+           return $user->id === $message->user_id;
+        });
     }
 
     /**

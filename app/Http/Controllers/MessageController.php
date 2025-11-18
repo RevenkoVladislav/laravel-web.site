@@ -7,6 +7,7 @@ use App\Models\CategoryForMessage;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class MessageController extends Controller
 {
@@ -49,6 +50,7 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
+        Gate::authorize('message-owner', $message);
         return view('admin.message.show', compact('message'));
     }
 
@@ -57,6 +59,7 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
+        Gate::authorize('message-owner', $message);
         $categories = CategoryForMessage::orderBy('title')->get();
         return view('admin.message.edit', compact('message', 'categories'));
     }
@@ -66,6 +69,7 @@ class MessageController extends Controller
      */
     public function update(MessageSaveRequest $request, Message $message)
     {
+        Gate::authorize('message-owner', $message);
         $payload = $request->validated();
         $message->update($payload);
 
@@ -77,8 +81,12 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Message $message)
     {
-        //
+        Gate::authorize('message-owner', $message);
+        $message->delete();
+        return redirect()
+            ->route('admin.messages.index')
+            ->with('notice', 'Message deleted');
     }
 }

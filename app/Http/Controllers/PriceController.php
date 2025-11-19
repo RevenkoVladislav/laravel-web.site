@@ -13,8 +13,9 @@ class PriceController extends Controller
     public function PriceForCourse(Course $course)
     {
         $schools = $course->schools()->withPivot('price')->orderByPivot('price', 'ASC')->get();
-        //return compact('course', 'schools');
-        return view('school.price-from-school', compact('course', 'schools'));
+        $course->load('images');
+        return compact('course', 'schools');
+        //return view('school.price-from-school', compact('course', 'schools'));
     }
 
     public function GroupPrice(Request $request)

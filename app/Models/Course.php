@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Course extends Model
 {
@@ -20,5 +21,10 @@ class Course extends Model
     public function getSchoolPriceAttribute()
     {
         return $this->pivot?->price ?? null;
+    }
+
+    public function imageable() : MorphMany
+    {
+        return $this->MorphMany(Image::class, 'imageable');
     }
 }

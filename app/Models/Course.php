@@ -23,7 +23,7 @@ class Course extends Model
         return $this->pivot?->price ?? null;
     }
 
-    public function imageable() : MorphMany
+    public function images() : MorphMany
     {
         return $this->MorphMany(Image::class, 'imageable');
     }

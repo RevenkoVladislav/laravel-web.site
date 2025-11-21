@@ -14,8 +14,8 @@ class PriceController extends Controller
     {
         $schools = $course->schools()->withPivot('price')->orderByPivot('price', 'ASC')->get();
         $course->load('images');
-        return compact('course', 'schools');
-        //return view('school.price-from-school', compact('course', 'schools'));
+        //return compact('course', 'schools');
+        return view('school.price-from-school', compact('course', 'schools'));
     }
 
     public function GroupPrice(Request $request)
@@ -31,7 +31,7 @@ class PriceController extends Controller
 
     public function InterestingPrice(Course $course)
     {
-        //ищем курсы у котороых коэффициент цен меньше 0.9, получаем у них id курсов
+        //ищем курсы у которых коэффициент цен меньше 0.9, получаем у них id курсов
         $res = DB::table('schools')
             ->select(['course_id', DB::raw('MIN(price) / AVG(price) as coef')])
             ->join('course_school', 'schools.id', '=', 'course_school.school_id')

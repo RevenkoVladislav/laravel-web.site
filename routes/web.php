@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CourseSchool;
+use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PriceController;
@@ -24,6 +25,9 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('messages', MessageController::class);
     Route::get('/auth/logout', [SessionController::class, 'logout'])->name('auth.logout');
+    Route::get('/images/{item}/{id}', [ImagesController::class, 'create'])
+        ->name('images.create')
+        ->whereIn('item', array_keys(config('imageables')));
 });
 
 Route::resource('posts', PostController::class);

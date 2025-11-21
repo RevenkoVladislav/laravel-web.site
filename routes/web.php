@@ -28,6 +28,10 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/images/{item}/{id}', [ImagesController::class, 'create'])
         ->name('images.create')
         ->whereIn('item', array_keys(config('imageables')));
+
+    Route::post('/images/{item}/{id}', [ImagesController::class, 'store'])
+        ->name('images.store')
+        ->whereIn('item', array_keys(config('imageables')));
 });
 
 Route::resource('posts', PostController::class);

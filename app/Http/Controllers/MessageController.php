@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MessageSaveRequest;
 use App\Models\CategoryForMessage;
 use App\Models\Message;
+use Dadata\DadataClient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -14,14 +15,11 @@ class MessageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(DadataClient $dadataClient)
     {
         $messages = Message::with('category')->where('user_id', Auth::id())->get();
-        $dadata = new \Dadata\DadataClient(
-            config('dadata')['token'],
-            config('dadata')['secret']
-        );
-        $response = $dadata->clean('address', "мск сухонская 11 89");
+
+        $response = $dadataClient->clean('address', "мск сухонская 11 89");
         var_dump($response);
         return view('admin.message.index', compact('messages'));
     }

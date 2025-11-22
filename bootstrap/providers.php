@@ -2,5 +2,5 @@
 
 return [
     App\Providers\AppServiceProvider::class,
-    App\Providers\DadataProvider::class,
+    App\Providers\AddressParserProvider::class,
 ];

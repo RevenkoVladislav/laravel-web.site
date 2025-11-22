@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MessageSaveRequest;
 use App\Models\CategoryForMessage;
 use App\Models\Message;
+use App\Services\AddressParser\AddressParserInterface;
 use Dadata\DadataClient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,11 +16,11 @@ class MessageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(DadataClient $dadataClient)
+    public function index(AddressParserInterface $addressParser)
     {
         $messages = Message::with('category')->where('user_id', Auth::id())->get();
 
-        $response = $dadataClient->clean('address', "мск сухонская 11 89");
+        $response = $addressParser->parse("мск сухонская 11 89");
         var_dump($response);
         return view('admin.message.index', compact('messages'));
     }

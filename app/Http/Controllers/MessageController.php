@@ -16,12 +16,9 @@ class MessageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(AddressParserInterface $addressParser)
+    public function index()
     {
         $messages = Message::with('category')->where('user_id', Auth::id())->get();
-
-        $response = $addressParser->parse("мск сухонская 11 89");
-        var_dump($response);
         return view('admin.message.index', compact('messages'));
     }
 

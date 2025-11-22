@@ -17,7 +17,12 @@ class MessageController extends Controller
     public function index()
     {
         $messages = Message::with('category')->where('user_id', Auth::id())->get();
-
+        $dadata = new \Dadata\DadataClient(
+            config('dadata')['token'],
+            config('dadata')['secret']
+        );
+        $response = $dadata->clean('address', "мск сухонская 11 89");
+        var_dump($response);
         return view('admin.message.index', compact('messages'));
     }
 

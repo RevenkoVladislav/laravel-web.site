@@ -16,8 +16,24 @@ services:
       dockerfile: _docker/app/Dockerfile
     volumes:
       - ./:/var/www/laravel-web.site
+    depends_on:
+      - db
+    working_dir: /var/www/laravel-web.site
     container_name: app
 
+  db:
+    image: mysql:9.0
+    restart: always
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+
     environment:
-      APP_ENV: local
-      APP_DEBUG: 1
+      MYSQL_DATABASE: laravel-web
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 8101:3306
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    container_name: app_db
+
+
+

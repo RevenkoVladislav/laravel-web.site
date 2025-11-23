@@ -2,8 +2,18 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - ./:/var/www/
-      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./laravel-web.site/:/var/www/laravel-web.site
+      - ./_docker/nginx/conf.d/:/etc/nginx/conf.d/
     ports:
       - "8876:80"
     container_name: app_nginx
+    depends_on:
+      - app
+
+  app:
+    build:
+      context: .
+      dockerfile: _docker/app/Dockerfile
+    volumes:
+      - ./laravel-web.site/:/var/www/laravel-web.site
+    container_name: app

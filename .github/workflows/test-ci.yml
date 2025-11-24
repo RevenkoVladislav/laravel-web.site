@@ -1,0 +1,38 @@
+name: Test CI
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+
+  first:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Git info
+        run: |
+          echo "app:${GITHUB_SHA}/${GITHUB_REF_NAME}/${{ github.event.head_commit.message }}"
+
+  second:
+    runs-on: ubuntu-latest
+    needs: first
+    steps:
+      - name: registry-style info
+        run: |
+          echo "another:${{ github.actor }}/my-registry/custom-tags"
+
+  third:
+    runs-on: ubuntu-latest
+    needs: second
+    env:
+      DB_NAME: some_name
+      DB_USER: root
+      DB_PASS: secret
+      APP_ENV: production
+      APP_DEBUG: false
+    steps:
+      - run: echo "DB is $DB_NAME, env is $APP_ENV"
